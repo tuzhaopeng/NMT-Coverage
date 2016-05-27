@@ -5,7 +5,7 @@ This is an implementation of the coverage model for attention-based NMT. More te
 
 Zhaopeng Tu, Zhengdong Lu, Yang Liu, Xiaohua Liu, Hang Li. Modeling Coverage for Neural Machine Translation. ACL 2016.
 
-NMT-Coverage is on top of lisa-groudhog (https://github.com/lisa-groundhog/GroundHog). It requires Theano0.9 and above version
+NMT-Coverage is on top of lisa-groudhog (https://github.com/lisa-groundhog/GroundHog). It requires Theano0.9 or above version
 
 Installation
 ------------
