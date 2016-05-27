@@ -7,7 +7,7 @@ In this version, we introduce a coverage mechanism (NMT-Coverage) to indicate wh
 If you use our code, please cite it:
 > <a href="http://www.zptu.net">Zhaopeng Tu</a>, Zhengdong Lu, Yang Liu, Xiaohua Liu, Hang Li. Modeling Coverage for Neural Machine Translation. <i>ACL 2016</i>.
 
-We are developing another mechanism to further improve the inadequate translations, which is complementary to the coverage model. The paper and code will be released soon.
+We are developing another mechanism to further alleviate the inadequate translations, which is complementary to the coverage model. The paper and code will be released soon.
 
 For any comments or questions, please  email <a href="mailto:tuzhaopeng@gmail.com">the first author</a>.
 
