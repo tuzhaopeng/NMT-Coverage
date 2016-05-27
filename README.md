@@ -1,9 +1,12 @@
 NMT-Coverage by Zhaopeng Tu
 ===========================
 
-This is an implementation of the coverage model for attention-based NMT. More technique details please refer to the following paper:
+We are still in the process of releasing our neural machine translation (NMT) code, which introduces a coverage mechanism to indicate whether a source word is translated or not.
 
-Zhaopeng Tu, Zhengdong Lu, Yang Liu, Xiaohua Liu, Hang Li. Modeling Coverage for Neural Machine Translation. ACL 2016.
+If you use our code, please cite it:
+> <a href="http://www.zptu.net">Zhaopeng Tu</a>, Zhengdong Lu, Yang Liu, Xiaohua Liu, Hang Li. Modeling Coverage for Neural Machine Translation. <i>ACL 2016</i>.
+
+For any comments or questions, please  email <a href="mailto:tuzhaopeng@gmail.com">the first author</a>.
 
 NMT-Coverage is on top of lisa-groudhog (https://github.com/lisa-groundhog/GroundHog). It requires Theano0.9 or above version
 
