@@ -1,4 +1,4 @@
-NMT-Coverage by Zhaopeng Tu
+NMT-Coverage
 ===========================
 
 We are still in the process of releasing our neural machine translation (NMT) code, which introduces a coverage mechanism to indicate whether a source word is translated or not.
