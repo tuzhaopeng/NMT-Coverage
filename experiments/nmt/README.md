@@ -4,6 +4,24 @@ Neural Machine Translation
 The folder experiments/nmt contains the implementations of NMT-Coverage 
 translation models used for the paper [1]
 
+####Changes
+
+We introduce a new proto naming *prototype_search_with_coverage_state* for the introduced coverage model.
+
+You can start to train the model by simply running
+```
+./train.sh
+```
+Meanwhilely, run
+```
+./tuning.sh
+```
+to tune on the development set. We train our models until the BLEU score on the development set stopped improving.
+
+Below please find more details.
+
+
+
 ####Code Structure
 
 - encdec.py contains the actual models code
@@ -20,22 +38,6 @@ translation models used for the paper [1]
 a dataset (see 'Data Preparation' below for more detail.)
 
 All the paths below are relative to experiments/nmt.
-
-####Changes
-
-We introduce a new proto naming *prototype_search_with_coverage_state* for the introduced coverage model.
-
-You can start to train the model by simply running
-```
-./train.sh
-```
-Meanwhilely, run
-```
-./tuning.sh
-```
-to tune on the development set. We train our models until the BLEU score on the development set stopped improving.
-
-Below please find more details.
 
 ####Using training script
 
