@@ -8,7 +8,7 @@ If you use our code, please cite it:
 
 For any comments or questions, please  email <a href="mailto:tuzhaopeng@gmail.com">the first author</a>.
 
-NMT-Coverage is on top of lisa-groudhog (https://github.com/lisa-groundhog/GroundHog). It requires Theano0.9 or above version
+NMT-Coverage is on top of lisa-groudhog (https://github.com/lisa-groundhog/GroundHog). It requires Theano0.9 or above version.
 
 Installation
 ------------
