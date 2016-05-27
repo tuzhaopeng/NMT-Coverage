@@ -33,7 +33,7 @@ Meanwhilely, run
 ```
 ./tuning.sh
 ```
-to tuning on the development set to check the translation performance.
+to tune on the development set. We train our models until the BLEU score on the development set stopped improving.
 
 Below please find more details.
 
