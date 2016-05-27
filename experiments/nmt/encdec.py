@@ -573,8 +573,6 @@ class RecurrentLayerWithSearch(Layer):
     def step_fprop(self,
                    state_below,
                    state_before,
-                   # added by Zhaopeng Tu, 2016-01-21
-                   previous_word=None,
                    # added by Zhaopeng Tu, 2015-10-29
                    coverage_before=None,
                    # added by Zhaopeng Tu, 2015-11-11
@@ -732,8 +730,6 @@ class RecurrentLayerWithSearch(Layer):
               init_state=None,
               # added by Zhaopeng Tu, 2015-12-16
               fertility=None,
-              # added by Zhaopeng Tu, 2016-01-21
-              target_words=None,
               #================
               gater_below=None,
               reseter_below=None,
@@ -762,8 +758,6 @@ class RecurrentLayerWithSearch(Layer):
         if state_below.ndim == 2 and \
            (not isinstance(batch_size,int) or batch_size > 1):
             state_below = state_below.reshape((nsteps, batch_size, self.n_in))
-            if target_words:
-                target_words = target_words.reshape((nsteps, batch_size, self.state['rank_n_approx']))
             if updater_below:
                 updater_below = updater_below.reshape((nsteps, batch_size, self.n_in))
             else:
@@ -807,22 +801,20 @@ class RecurrentLayerWithSearch(Layer):
         # The general order of function parameters to fn is:
         # sequences (if any), prior result(s) (if needed), non-sequences (if any)
         if not self.state.get('maintain_coverage', False): 
-            sequences = [state_below, target_words, mask, updater_below, reseter_below]
+            sequences = [state_below, mask, updater_below, reseter_below]
             non_sequences = [c, c_mask, p_from_c] 
-            #              seqs        | out |  non_seqs
-            fn = lambda x, y, m, g, r,   h,    c1, cm, pc, l, pl : self.step_fprop(x, h, mask=m,
-                    previous_word=y,
+            #              seqs     | out |  non_seqs
+            fn = lambda x, m, g, r,   h,    c1, cm, pc, l, pl : self.step_fprop(x, h, mask=m,
                     gater_below=g, reseter_below=r,
                     c=c1, p_from_c=pc, c_mask=cm,
                     use_noise=use_noise, no_noise_bias=no_noise_bias,
                     return_alignment=return_alignment)
         else:
             # combined by Zhaopeng Tu, 2016-01-29
-            sequences = [state_below, target_words, mask, updater_below, reseter_below]
+            sequences = [state_below, mask, updater_below, reseter_below]
             non_sequences = [c, c_mask, p_from_c, cov_inputer_from_c, cov_gater_from_c, cov_reseter_from_c, fertility] 
-            #              seqs        | out          |  non_seqs
-            fn = lambda x, y, m, g, r,   h, coverage,   c1, cm, pc, cx, cg, cr, f : self.step_fprop(x, h, mask=m,
-                    previous_word=y,
+            #              seqs     | out          |  non_seqs
+            fn = lambda x, m, g, r,   h, coverage,   c1, cm, pc, cx, cg, cr, f : self.step_fprop(x, h, mask=m,
                     coverage_before=coverage,
                     # added by Zhaopeng Tu, 2015-12-17
                     fertility=f,
@@ -1494,7 +1486,6 @@ class Decoder(EncoderDecoderBase):
         #  (n_samples, dim)
         hidden_layers = []
         contexts = []
-        previous_contexts = []
         # Default value for alignment must be smth computable
         alignment = TT.zeros((1,))
         for level in range(self.num_levels):
@@ -1511,17 +1502,10 @@ class Decoder(EncoderDecoderBase):
                 add_kwargs['c'] = c
                 add_kwargs['c_mask'] = c_mask
                 add_kwargs['return_alignment'] = self.compute_alignment
-                # added by Zhaopeng Tu, 2016-01-21
-                # for context gate
-                if mode != Decoder.EVALUATION:
-                    add_kwargs['previous_word'] = approx_embeddings
-                else:
-                    add_kwargs['target_words'] = approx_embeddings
                 # added by Zhaopeng Tu, 2015-12-16
                 # calculate the fertility for each source word
-                if self.state['maintain_coverage'] and self.state['use_linguistic_coverage']:
-                    if self.state['use_fertility_model']:
-                        add_kwargs['fertility'] = fertility
+                if self.state['maintain_coverage'] and self.state['use_linguistic_coverage'] and self.state['use_fertility_model']:
+                    add_kwargs['fertility'] = fertility
 
                 if mode != Decoder.EVALUATION:
                     add_kwargs['step_num'] = step_num
