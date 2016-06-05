@@ -4,7 +4,7 @@ NMT-Coverage
 We are still in the process of releasing our neural machine translation (NMT) code, which alleviates the problem of fluent but inadequate translations that NMT suffers.
 In this version, we introduce a coverage mechanism (NMT-Coverage) to indicate whether a source word is translated or not, which proves to alleviate over-translation and under-translation.
 
-If you use our code, please cite our paper:
+If you use the code, please cite our paper:
 
 <pre><code>@InProceedings{Tu:2016:ACL,
   author    = {Tu, Zhaopeng and Lu, Zhengdong and Liu, Yang and Liu, Xiaohua and Li, Hang},
