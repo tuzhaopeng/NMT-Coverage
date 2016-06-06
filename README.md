@@ -22,7 +22,7 @@ For any comments or questions, please  email <a href="mailto:tuzhaopeng@gmail.co
 Installation
 ------------
 
-NMT-Coverage is developed by <a href="http://www.zptu.net">Zhaopeng Tu</a>, which is on top of lisa-groudhog (https://github.com/lisa-groundhog/GroundHog). It requires Theano0.9 or above version.
+NMT-Coverage is developed by <a href="http://www.zptu.net">Zhaopeng Tu</a>, which is on top of lisa-groudhog (https://github.com/lisa-groundhog/GroundHog). It requires Theano0.8 or above version (for the module "scan" used in the trainer).
 
 To install NMT-Coverage in a multi-user setting
 
