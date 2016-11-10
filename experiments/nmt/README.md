@@ -135,16 +135,6 @@ Since it can be very expensive to shuffle the dataset each time you train a
 model, we shuffle dataset in advance. However, note that we do keep the original
 files for debugging purpose.
 
-####Tests
-
-Run
-```
-GHOG=/path/to/groundhog test/test.bash
-```
-to test sentence pairs scoring and translation generation. The script will start with creating 
-a workspace directory and download test models there. You can keep using the same test workspace
-and data.
-
 ####Known Issues
 
 - float32 is hardcoded in many places, which effectively means that you can only 
