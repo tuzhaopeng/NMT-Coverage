@@ -1,7 +1,7 @@
 NMT-Coverage
 ===========================
 
-**Please refer to a clean version of <a href="https://github.com/tuzhaopeng/nmt">improved NMT</a>, which is incorporates coverage, context gates, and reconstruction models**.
+**Please refer to a clean version of <a href="https://github.com/tuzhaopeng/nmt">improved NMT</a>, which incorporates coverage, context gates, and reconstruction models**.
 
 
 In this version, we introduce a coverage mechanism (NMT-Coverage) to indicate whether a source word is translated or not, which proves to alleviate over-translation and under-translation. If you use the code, please cite <a href="http://arxiv.org/abs/1601.04811">our paper</a>:
